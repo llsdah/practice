@@ -3,39 +3,43 @@ package train202207.account;
 import train202207.account.common.AccountNumberGenerate;
 
 import java.security.AccessControlContext;
+import java.util.*;
 
 public class AccountManager {
-    private Account[] accounts;
+    private HashMap<Integer,Account> accounts;
     private int increment = 0;
 
     public AccountManager(){
-        accounts = new Account[10];
+        accounts = new HashMap<Integer, Account>();
+    }
+    public AccountManager(int num){
+        accounts = new HashMap<Integer, Account>(num);
     }
 
     public void innerAccount(Account account){
-        accounts[increment++] = account;
+        accounts.put(increment++,account);
     }
 
     public void insertAccount(float balance, String name){
         Account ac = new Account(balance, name, AccountNumberGenerate.generateAccountNumber());
-        accounts[increment++] = ac; // 계좌 입력해 주기
+        accounts.put(increment++,ac); // 계좌 입력해 주기
     }
 
     public void averageAccounts(){
         float sum =0;
         for (int i = 0; i < increment; i++) {
-            sum += accounts[i].getBalance();
+            sum += accounts.get(i).getBalance();
         }
         float average = sum/increment;
-        System.out.printf("평균 잔고는 %.2f 입니다.",average);
+        System.out.printf("평균 잔고는 %.2f 입니다.\n",average);
 
     }
     public void allAccounts(){
         for(int i =0; i<increment;i++){
-            accounts[i].getBalance();
+            accounts.get(i).getBalance();
         }
         System.out.println("강화된 for each");
-        for (Account ac: accounts) {
+        for (Account ac: accounts.values()) {
             if(ac==null) break;
             ac.getBalance();
         }
@@ -48,7 +52,7 @@ public class AccountManager {
         Account from = null;
         Account to =null;
 
-        for (Account ac: accounts) {
+        for (Account ac: accounts.values()) {
             if(ac == null ) break;
             if (fromAccountNumber.equals(ac.getAccountNumber())) {
                 from = ac;
