@@ -45,6 +45,10 @@ public class Account {
         return accountNumber;
     }
 
+    @Override
+    public String toString() {
+        return this.accountName +this.accountNumber+this.balance;
+    }
 }
 
 

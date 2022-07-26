@@ -1,5 +1,7 @@
 package train202207.account;
 
+import train202207.account.common.AccountNumberGenerate;
+
 import java.security.AccessControlContext;
 
 public class AccountManager {
@@ -12,6 +14,11 @@ public class AccountManager {
 
     public void innerAccount(Account account){
         accounts[increment++] = account;
+    }
+
+    public void insertAccount(float balance, String name){
+        Account ac = new Account(balance, name, AccountNumberGenerate.generateAccountNumber());
+        accounts[increment++] = ac; // 계좌 입력해 주기
     }
 
     public void averageAccounts(){
@@ -29,6 +36,7 @@ public class AccountManager {
         }
         System.out.println("강화된 for each");
         for (Account ac: accounts) {
+            if(ac==null) break;
             ac.getBalance();
         }
 
