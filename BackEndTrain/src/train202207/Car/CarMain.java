@@ -5,6 +5,7 @@ public class CarMain {
     public static void main(String[] args) {
         Car c = new Car(120,"g하하하하");
         System.out.println(c.drive("??",10));
+        c.getCar("213",123);
     }
 }
 
@@ -19,23 +20,36 @@ class Car{
         this.Name = n;
     }
 
-    class CarAudio{
-        private int volumn;
-        private String singer;
 
-        public CarAudio(int volumn, String singer) {
-            this.volumn = volumn;
-            this.singer = singer;
-        }
+    public CarAudioable getCar(String singer,int value){
+        // final int NUM=11; 은 지역클래스 접근 가능 final이 붙어야 된다.
+        // 지역클래스
+        class CarAudio implements CarAudioable{
+            private int volumn;
+            private String singer;
 
-        public String music(){
-            return " 볼륨 "+volumn + "가수 누구게 : " + singer;
+            public CarAudio(int volumn, String singer) {
+                this.volumn = volumn;
+                this.singer = singer;
+            }
+
+            public String music(){
+                return " 볼륨 "+volumn + "가수 누구게 : " + singer+" vlaue "+singer;
+            }
+            @Override
+            public String Auable(){
+                return this.music() + "이용가능합니다. ";
+            }
+
         }
+        CarAudio ac = new CarAudio(value,singer );
+        return ac;
     }
 
+
     public String drive(String singer, int volume){
-        CarAudio ca = new CarAudio(volume,singer);
-        return ca.music()+" 속도 " + speed;
+        CarAudioable ca = this.getCar(singer, volume);
+        return ca.Auable() +" 속도 " + speed ;
     }
 
 }
