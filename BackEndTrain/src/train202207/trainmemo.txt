@@ -147,7 +147,20 @@ StringBuffer, StringBuilder : 변경가능한 스트링 클래스
 
 바이트 단위데이터 버퍼.
 
+Stream
+- 순서화된 일련의 자료, 추상적인 입출력 모델
+- 입출력 장치에 독립적인 입출력 장치
+- byte 단위 : inputstream outStream
+- character : Reader Write
 
+객체 직렬화 = 마샬링 한다?
+- 갹체의 내용을 파일 혹은 네트워크 통해 byte Stream으로 입출력
+- 전송 가능한 형태로 만드는 것. 객체를 연속적 데이터로 변형
++ 역직렬화 데이터를 다시 객체로 만드는 것
++ Serialiszble 인터페이스 객체 직렬화 위해 필요한것
+
+프로세스 관리
+- 현재의 실행환경을 나타내는 RunTIme
 
 
 

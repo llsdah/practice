@@ -7,9 +7,10 @@ public class StreamBasic {
     public static void main(String[] args) {
         FileInputStream infile = null;
         FileOutputStream outfile = null;
+        System.out.println(args[0]);
         try{
-            infile = new FileInputStream(new File("C:\\practice\\BackEndTrain\\src\\train202207\\trainmemo.txt"));
-            outfile = new FileOutputStream(new File("C:\\practice\\BackEndTrain\\src\\train202207\\trainmemo2.txt"));
+            infile = new FileInputStream(new File(args[0]));
+            outfile = new FileOutputStream(new File(args[1]));
             long st = System.currentTimeMillis();
             for (int i =0; (i = infile.read()) != -1;){
                 outfile.write(i);
