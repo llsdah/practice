@@ -180,7 +180,7 @@ JDBC
 - ResultSetMetaData : 컬럼수 이름 데이터 타입 등의 정보를 얻을 수 있다.
 - PrepareStatment "?" 사용해 매게 변수를 동적화 가능.
 - Batch 프로세스 : 단일 쿼리 실행 대신 배치 쿼리로 실행하면성능이 향상됨, addBatch 단일 배치 추가  executeBatch 추가 배치 다 실해
-
+- CallableStatement =  프로시저, 트리거 등 PLSQL 위한 것
 
 
 + 사용법
@@ -190,7 +190,48 @@ cnt = psmt.executeUpdate();
 ResultSet rs = st.executeQuery(sql);
 seq = rs.getString("seq");
 
++ DAO DTO VO
+DAO data Access Object
+- DB에 접근하지 위한 객체 , db 상 로직및 비지니스 로직이 추가 되빈다.
+DTO data Transfer Object
+- 계층간 데이터 교환 위한 사용하느 객체 즉, get set만 있는숩니다.
+- Form 상에 입력받은 데이터 DTO 전달 -> DAO 전달해 입력 및 가지고옴 -> DTO -> VO
+VO value OBject
+- 오브젝르로써 값을 위해 쓰이는 것입니다..
 
 
+day 5
+HTTP, Sevlet JSP
 
+http 헤더에 쿠키 설정하는 칸이 있다.
+쿠키 - server가 client에 주고간 것
+- java 지원의 client 요청에 대한 응답을지원하는 모듈을 개발하는것.
+- HTTP TCP/IP 통신 상의 응용계층 프로토콜의 일종으로 웹 클라이 언트와 웹 서버가 서로 데이ㅓㅌ 주고 받는데 필요한 약속
++ Connectionless & Stateless  , 한번의요청에 대해 TCP 통인 설정 후 한번의 요청 응답 처리 후 TCP 끊어 버리는 형태의 통신
+++ 연속적 혀ㅇ태 부적합, 다수 사용자 대한 pull 방식 문서 전달 받을떈ㄴ 적합한 통신
++ 한번 요청 한번응답으로 트랜잭션 종료=> 트랜잭션 관리위한 overhead 없음,
 
+- 요정 구초
++ 시작 라인 : 요구 메시지인경우 요구 사하에 대한 정보가 응답메시지의 경우 응답 내용의 상태 정보로 구정
++ 메시지 헤더 : http 메시지에 대한 부가적인 정보, 날짜 프로그램 이름, 버전 쿠키, 사용자 이증, 캐시 등
++ 메시지 바디 : 요구나 응답 필요내용 담고 있다,
+
+- request Method
++ GET, POST, PUT(url 저장, 파일 업로드 비슷), delete( 문서 삭제시 사용)
+
+- 응답구조
+- GET : 데이터에 url 붙여 전송, 헤더에 바디가 없다. 정보량 한계, 보안 약함
+- POST : encoding 메시지 전송, 바디 통해 스트림 전송 용량제한없다, 보안우수, 응답코드 나타남,
++ 응답코드 200(성공적 요청에 응답), 300(다른 페이지로 재연결 필요), 400 클라이언트에 오류가 있음) 500(서버에 에러가 발생함,
+
+SERVLET
+- 서버의 기능을 확장시켜 주는 자바 객체
+- 웹페이지를 동적으로 생성하는 자바 서버 기술
+- 커테이너에서 구종
+- JSP도 결국 servlet 변환 후 실행, 멀티 쓰레드 모델 동작
+- JSP = html 문서 안의 JAVA 코드 , selvet은 java 코드 안에 html 코드
+- CGI 프로그램 대응 ,
+- main 메소드 가지지 않고, doGET doPOST로 나타냄..
+- 서블릿과 쓰레드
++ 여러 웹클라이언트가 하나의 서블릿에 동시에 접근할 떄 여러 쓰레드에 의해 동시에 실행될 수 있으며, ㄷㅇ기화 처리 하지 않으며 오작동가능합니다.
++ 하나 서블릿에 하나 객체 생성성

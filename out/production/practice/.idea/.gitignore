@@ -1,0 +1,7 @@
+# Default ignored files
+# 2022.07.24 update
+
+/shelf/
+/workspace.xml
+.gradle
+build
